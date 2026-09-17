@@ -1,0 +1,605 @@
+/* ============================================================
+   VANADIO TECH
+   Estética "ficha técnica / catálogo industrial" anclada en el
+   elemento químico Vanadio (Nº 23). Fondo papel, tipografía
+   grotesca + monoespaciada, esquinas rectas, retícula asimétrica.
+   Paleta: papel + tinta (neutros), azul acero (primario),
+   naranja señal (acción).
+   ============================================================ */
+:root {
+  --papel:   #e6e7e3;
+  --tarjeta: #f6f6f2;
+  --tinta:   #17191c;
+  --apagado: #5f636a;
+  --acero:   #22506d;
+  --acero-d: #163247;
+  --senal:   #ee6321;
+  --senal-d: #cf5219;
+  --linea:   #c9cabf;
+  --max:     1180px;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'Space Mono', ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: var(--papel); }
+
+body {
+  font-family: var(--sans);
+  color: var(--tinta);
+  background: var(--papel);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 88px 0; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acero);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.kicker::before {
+  content: "";
+  width: 26px; height: 2px;
+  background: var(--senal);
+}
+
+.sec-head { margin-bottom: 52px; max-width: 760px; }
+.sec-head h2 {
+  font-size: clamp(1.75rem, 4.2vw, 2.7rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-top: 18px;
+  text-wrap: balance;
+}
+.sec-head p {
+  color: var(--apagado);
+  margin-top: 14px;
+  font-size: 1.05rem;
+  max-width: 620px;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 14px 24px;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .12s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn-cta { background: var(--senal); color: #fff; }
+.btn-cta:hover { background: var(--senal-d); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--tinta);
+  border-color: var(--tinta);
+}
+.btn-ghost:hover { background: var(--tinta); color: var(--papel); }
+.btn-steel { background: var(--acero); color: #fff; }
+.btn-steel:hover { background: var(--acero-d); transform: translateY(-2px); }
+
+.link-arrow {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  border-bottom: 2px solid var(--senal);
+  padding-bottom: 3px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+.link-arrow:hover { color: var(--senal); }
+
+.ico-wa { width: 19px; height: 19px; fill: currentColor; flex-shrink: 0; }
+
+/* ---------- Casilla de elemento (marca) ---------- */
+.elemento {
+  position: relative;
+  display: inline-grid;
+  place-content: center;
+  background: var(--acero);
+  color: #fff;
+  border: 2px solid var(--acero);
+  font-family: var(--mono);
+  line-height: 1;
+}
+.elemento .num { position: absolute; top: 4px; left: 5px; font-size: 0.5rem; opacity: 0.85; }
+.elemento .sym { font-weight: 700; }
+.elemento .mass { position: absolute; bottom: 3px; left: 0; right: 0; text-align: center; font-size: 0.4rem; opacity: 0.8; }
+.elemento.sm { width: 44px; height: 44px; }
+.elemento.sm .sym { font-size: 1.25rem; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(230,231,227,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea);
+}
+.head-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+.head-nav { display: flex; align-items: center; gap: 34px; }
+.head-nav ul { display: flex; gap: 30px; }
+.head-nav a {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  transition: color .15s ease;
+}
+.head-nav a:hover { color: var(--senal); }
+.head-nav a.head-wa {
+  background: var(--tinta);
+  color: var(--papel);
+  padding: 10px 18px;
+  border-radius: 3px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.head-nav a.head-wa:hover { background: var(--senal); color: #fff; }
+.nav-toggle { display: none; }
+
+/* ---------- Selector de audiencia (negocio / reseller) ---------- */
+.audiencia {
+  background: var(--tinta);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.audiencia .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  flex-wrap: wrap;
+}
+.audiencia span.lbl {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-right: 4px;
+}
+.audiencia a {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85);
+  transition: all .15s ease;
+}
+.audiencia a:hover { border-color: var(--senal); color: #fff; }
+.audiencia a.activa {
+  background: var(--senal);
+  border-color: var(--senal);
+  color: #fff;
+}
+
+/* ============================================================
+   HERO — retícula asimétrica
+   ============================================================ */
+.hero { padding: 72px 0 84px; border-bottom: 1px solid var(--linea); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 5.4vw, 3.75rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 20px 0 22px;
+  text-wrap: balance;
+}
+.hero h1 mark {
+  background: none;
+  color: var(--tinta);
+  box-shadow: inset 0 -0.32em 0 rgba(238,99,33,0.35);
+}
+.hero-lead {
+  font-size: 1.15rem;
+  color: var(--apagado);
+  max-width: 520px;
+  text-wrap: pretty;
+}
+.hero-acciones {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 8px;
+  margin-top: 40px;
+}
+.hero-meta span {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--apagado);
+  border: 1px solid var(--linea);
+  padding: 6px 12px;
+  border-radius: 3px;
+}
+
+/* Visual: demo de reseña + etiqueta NFC (diagrama, no foto stock) */
+.demo {
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  padding: 20px;
+  position: relative;
+}
+.demo-strip {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--apagado);
+  border-bottom: 1px dashed var(--linea);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+.fono {
+  background: #fff;
+  border: 2px solid var(--tinta);
+  border-radius: 16px;
+  padding: 20px 18px 22px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+.fono-top {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--linea);
+}
+.fono-top .dot { width: 26px; height: 26px; border-radius: 50%; background: var(--acero); }
+.fono-top b { font-size: 0.9rem; }
+.fono-top small { display: block; font-family: var(--mono); font-size: 0.62rem; color: var(--apagado); }
+.estrellas { display: flex; gap: 4px; margin: 16px 0 10px; }
+.estrellas svg { width: 24px; height: 24px; fill: var(--senal); }
+.fono-lineas span { display: block; height: 8px; background: #ececec; border-radius: 4px; margin-bottom: 8px; }
+.fono-lineas span:nth-child(2) { width: 78%; }
+.fono-lineas span:nth-child(3) { width: 54%; }
+.fono-btn {
+  margin-top: 16px;
+  background: var(--senal);
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.86rem;
+  padding: 11px;
+  border-radius: 4px;
+}
+.nfc {
+  position: absolute;
+  left: -14px; bottom: -14px;
+  background: var(--tinta);
+  color: var(--papel);
+  border-radius: 4px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 28px rgba(23,25,28,0.22);
+}
+.nfc svg { width: 22px; height: 22px; stroke: var(--senal); fill: none; stroke-width: 2; }
+.nfc .txt { font-family: var(--mono); font-size: 0.62rem; line-height: 1.3; letter-spacing: 0.04em; text-transform: uppercase; }
+.nfc .txt b { color: var(--senal); }
+
+/* ============================================================
+   CÓMO FUNCIONA — pasos editoriales numerados
+   ============================================================ */
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.paso {
+  border-top: 2px solid var(--tinta);
+  padding: 22px 28px 4px 0;
+}
+.paso:not(:last-child) { border-right: 1px solid var(--linea); padding-right: 32px; }
+.paso:not(:first-child) { padding-left: 32px; }
+.paso-n {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--senal);
+}
+.paso-ico { margin: 22px 0 16px; }
+.paso-ico svg { width: 34px; height: 34px; stroke: var(--acero); fill: none; stroke-width: 1.75; }
+.paso h3 { font-size: 1.2rem; margin-bottom: 8px; letter-spacing: -0.01em; }
+.paso p { color: var(--apagado); font-size: 0.98rem; }
+
+/* ============================================================
+   PACKS — columnas tipo catálogo
+   ============================================================ */
+.packs-bg { background: var(--acero); color: #fff; }
+.packs-bg .kicker { color: #fff; }
+.packs-bg .kicker::before { background: var(--senal); }
+.packs-bg .sec-head p { color: rgba(255,255,255,0.75); }
+.packs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.pack {
+  background: var(--tarjeta);
+  color: var(--tinta);
+  border-radius: 4px;
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+}
+.pack--star { outline: 3px solid var(--senal); outline-offset: 0; position: relative; }
+.pack-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--senal);
+  margin-bottom: 10px;
+  min-height: 1em;
+}
+.pack h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.pack-sub { color: var(--apagado); font-size: 0.94rem; margin: 8px 0 20px; min-height: 42px; }
+.pack-precio {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--acero);
+}
+.pack-precio small { font-size: 0.9rem; color: var(--apagado); }
+.pack-pago {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apagado);
+  margin: 8px 0 24px;
+}
+.pack ul { flex-grow: 1; margin-bottom: 26px; }
+.pack li {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 11px 0;
+  font-size: 0.95rem;
+  border-top: 1px solid var(--linea);
+}
+.pack li .mk { color: var(--senal); font-family: var(--mono); font-weight: 700; flex-shrink: 0; }
+.pack .btn { width: 100%; justify-content: center; }
+
+/* ---------- Tabla de precios por volumen (resellers) ---------- */
+.volumen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.tramo {
+  background: var(--tarjeta);
+  color: var(--tinta);
+  border-radius: 4px;
+  padding: 30px 26px;
+  text-align: center;
+  border: 1px solid var(--linea);
+}
+.tramo--destacado { outline: 3px solid var(--senal); outline-offset: 0; }
+.tramo-uds {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apagado);
+  margin-bottom: 14px;
+}
+.tramo-precio {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 2.6rem;
+  letter-spacing: -0.02em;
+  color: var(--acero);
+  line-height: 1;
+}
+.tramo-precio small { font-size: 0.95rem; color: var(--apagado); font-weight: 400; }
+.tramo-nota { color: var(--apagado); font-size: 0.9rem; margin-top: 10px; }
+
+/* ============================================================
+   POR QUÉ — retícula de rasgos
+   ============================================================ */
+.rasgos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.rasgo { border-top: 2px solid var(--senal); padding-top: 20px; }
+.rasgo-ico {
+  width: 46px; height: 46px;
+  background: var(--acero);
+  display: grid; place-items: center;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.rasgo-ico svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 1.9; }
+.rasgo h3 { font-size: 1.08rem; margin-bottom: 8px; }
+.rasgo p { color: var(--apagado); font-size: 0.94rem; }
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: start;
+}
+.contacto-info h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -0.02em; margin: 18px 0 16px; line-height: 1.1; }
+.contacto-info > p { color: var(--apagado); margin-bottom: 28px; max-width: 440px; }
+.contacto-fila {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--mono);
+  border-top: 1px solid var(--linea);
+  padding: 16px 0;
+}
+.contacto-fila:last-of-type { border-bottom: 1px solid var(--linea); margin-bottom: 28px; }
+.contacto-fila svg { width: 20px; height: 20px; fill: var(--senal); }
+
+form {
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  padding: 34px;
+  border-radius: 4px;
+}
+.campo { margin-bottom: 22px; }
+.campo label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apagado);
+  margin-bottom: 8px;
+}
+.campo input, .campo select {
+  width: 100%;
+  padding: 10px 2px;
+  border: none;
+  border-bottom: 2px solid var(--linea);
+  background: transparent;
+  font-size: 1.05rem;
+  font-family: var(--sans);
+  color: var(--tinta);
+  transition: border-color .15s ease;
+}
+.campo input::placeholder { color: #a7a9a2; }
+.campo input:focus, .campo select:focus { outline: none; border-bottom-color: var(--senal); }
+form .btn { width: 100%; justify-content: center; margin-top: 6px; }
+.form-nota { font-family: var(--mono); font-size: 0.72rem; color: var(--apagado); text-align: center; margin-top: 16px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--tinta);
+  color: rgba(255,255,255,0.72);
+  padding: 56px 0 34px;
+}
+.foot-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.foot-marca { display: flex; align-items: center; gap: 14px; }
+.elemento.footer { width: 48px; height: 48px; background: transparent; border-color: rgba(255,255,255,0.4); }
+.elemento.footer .sym { font-size: 1.35rem; }
+.foot-marca .nombre { color: #fff; font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; }
+.foot-marca .legal { font-family: var(--mono); font-size: 0.74rem; color: rgba(255,255,255,0.6); margin-top: 3px; }
+.foot-redes { display: flex; gap: 12px; }
+.foot-redes a {
+  width: 42px; height: 42px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  display: grid; place-items: center;
+  transition: background .15s ease, border-color .15s ease;
+}
+.foot-redes a:hover { background: var(--senal); border-color: var(--senal); }
+.foot-redes svg { width: 19px; height: 19px; fill: #fff; }
+.foot-copy {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 26px;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  section { padding: 64px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .demo { max-width: 380px; }
+  .pasos { grid-template-columns: 1fr; }
+  .paso { border-right: none !important; padding: 22px 0 24px !important; }
+  .packs { grid-template-columns: 1fr; }
+  .volumen { grid-template-columns: 1fr; }
+  .rasgos { grid-template-columns: repeat(2, 1fr); }
+  .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .head-nav ul {
+    display: none;
+    position: absolute;
+    top: 74px; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--papel);
+    border-bottom: 1px solid var(--linea);
+    padding: 6px 24px 18px;
+  }
+  .head-nav ul.abierto { display: flex; }
+  .head-nav li { border-bottom: 1px solid var(--linea); }
+  .head-nav ul a { display: block; padding: 15px 0; }
+  .head-wa { display: none; }
+  .nav-toggle {
+    display: grid; place-items: center;
+    background: transparent; border: none; cursor: pointer;
+    width: 42px; height: 42px;
+  }
+  .nav-toggle svg { width: 26px; height: 26px; stroke: var(--tinta); stroke-width: 2; }
+}
+
+@media (max-width: 520px) {
+  .rasgos { grid-template-columns: 1fr; }
+  .hero-acciones .btn { width: 100%; justify-content: center; }
+}
