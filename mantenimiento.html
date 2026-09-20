@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vanadio Tech — En mantenimiento</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papel: #e6e7e3;
+    --tinta: #17191c;
+    --apagado: #5f636a;
+    --acero: #22506d;
+    --senal: #ee6321;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .card { max-width: 480px; }
+  .elemento {
+    width: 60px; height: 60px;
+    background: var(--acero);
+    color: #fff;
+    display: inline-grid;
+    place-content: center;
+    position: relative;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 28px;
+  }
+  .elemento .num { position:absolute; top:6px; left:7px; font-size:0.6rem; opacity:0.85; }
+  .elemento .sym { font-weight:700; font-size:1.6rem; }
+  .elemento .mass { position:absolute; bottom:5px; left:0; right:0; font-size:0.5rem; opacity:0.8; }
+  h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); letter-spacing:-0.02em; margin-bottom: 14px; }
+  p { color: var(--apagado); font-size: 1.05rem; margin-bottom: 28px; }
+  .btn {
+    display: inline-flex; align-items:center; gap:10px;
+    background: var(--senal); color:#fff;
+    font-weight:600; padding: 13px 24px; border-radius:3px;
+    text-decoration:none;
+  }
+  .kicker {
+    font-family:'Space Mono', monospace; font-size:0.72rem;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--acero);
+    margin-top: 34px; display:block;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="elemento" aria-hidden="true">
+      <span class="num">23</span>
+      <span class="sym">V</span>
+      <span class="mass">50.94</span>
+    </span>
+    <h1>Estamos actualizando la web</h1>
+    <p>Vanadio Tech vuelve enseguida. Si necesitas algo mientras tanto, escríbenos directamente.</p>
+    <a class="btn" href="https://wa.me/34680391254?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Vanadio%20Tech" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    <span class="kicker">Vanadio Tech · Presencia digital para negocios locales</span>
+  </div>
+</body>
+</html>
